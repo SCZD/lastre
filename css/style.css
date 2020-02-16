@@ -1,0 +1,266 @@
+*{
+	box-sizing: border-box;
+}
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-thumb {
+	background: #666;
+	border-radius: 0px;
+}
+::-webkit-scrollbar-track{
+	background: #ddd;
+	margin: 0 0;
+}
+body{
+	background: #ffffff;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Source Code Pro', monospace;
+	font-size: 16px;
+	min-height: 100vh;
+	padding-bottom: 36px;
+	position: relative;
+	color: #ffffff;
+}
+header{
+	width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #121212;
+}
+#header{
+	width: 95%;
+    display: flex;
+    position: relative;
+    /*padding: 10px 0;*/
+    justify-content: center;
+}
+#header ul{
+	display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#header li{
+	margin: 0 5px;
+	display: flex; /*Cuenta el padding como contenido en y*/
+	position: relative;
+}
+#header a{
+	text-decoration: none;
+	color: #B3B6B7;
+	padding: 15px 5px;
+	font-size: 14px;
+}
+#header a:hover{
+	color: #ffffff;
+}
+.body_main{
+	font-size: 14px;
+	background: #1f1f1f;
+	width: 100%;
+	min-height: calc(100vh - 82px); /*los 82px son height del header + el otro height del footer */
+	padding: 25px;
+	position: relative;
+}
+.cover_page{
+	width: 100%;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+.cover_page_game{
+	width: 152px;
+	margin: 0 10px 10px 10px;
+	position: relative;
+}
+.cover_page_game_add{
+	width: 152px;
+	margin: 0 10px 10px 10px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.cover_page_game_img{
+	/*las imagenes originalies 390x520 -> 0.75*/
+	width: 100%;
+	height: 202.6666666666666px; /*214*/
+	/*background: white;*/
+	border-radius: 5px;
+	border: 2px solid #1f1f1f;
+	overflow: hidden;
+	margin-bottom: 5px;
+	position: relative;
+}
+.cover_page_game_img:hover{
+	border-color: white;
+	cursor: pointer;
+}
+.cover_page_game_img img{
+	height: 100%;
+	width: 100%;
+}
+.cover_page_game_img a{
+	transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%
+}
+.cover_page_game_img_add{
+	/*las imagenes originalies 390x520 -> 0.75*/
+	width: 100%;
+	/*height: 202.6666666666666px;*/ /*214*/
+	/*background: white;*/
+	border-radius: 5px;
+	border: 2px solid #1f1f1f;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+.cover_page_game_img_add img{
+	width: 100%;
+	filter: invert(60%);
+}
+.cover_page_game_img_add img:hover{
+	filter: invert(100%);
+	cursor: pointer;
+}
+.cover_page_game_name{
+	/*display: flex;*/ /*impide que el text aling center funcione con una linea ie si hay mas de una linea funciona
+	ademas puedo quitar el width 100 y dejar el justify en su lugar lo que alinearia los div al centro pero si es multilinea
+	el titulo haria falta en text aling center*/
+	width: 100%;
+	/*justify-content: center;*/
+	text-align: center;
+	line-height: 1.3;
+}
+footer{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: #121212;
+	display: flex;
+	z-index: 10;
+	justify-content: center;
+}
+#footer{
+	/*padding: 10px 0;*/
+	/*font-family: 'Source Code Pro', monospace;*/
+}
+#footer ul{
+	display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#footer li{
+	margin: 0 5px;
+	display: flex; /*Cuenta el padding como contenido en y*/
+	position: relative;
+}
+#footer a{
+	text-decoration: none;
+	color: #B3B6B7;
+	padding: 10px 5px;
+	font-size: 14px;
+}
+#footer a:hover{
+	color: #ffffff;
+}
+
+.form_for_games{
+	border-radius: 5px;
+	width: 100%;
+	min-height: calc(100vh - 132px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.form_for_games_add{
+	border-radius: 5px;
+	background: #ffffff;
+	/*height: 750px;*/
+	width: 500px;
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+}
+.form_for_games_add h2{
+	color: #000000;
+	text-align: center;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+.form_for_games_add button{
+	border: none;
+	background: #7367f0;
+	border-radius: 3px;
+	padding: 20px;
+	margin-top: 30px;
+	color: #ffffff;
+	font-size: 15px;
+}
+.form_for_games_add button:hover{
+	text-decoration: underline;
+	box-shadow: rgb(115, 103, 240) 0 10px 20px -8px;
+}
+.form_for_games_add_name{
+	outline: none;
+	padding: 15px;
+	background: #f2f2f2;
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	max-width: 100%;
+	min-width: 100%;
+}
+.form_for_games_add textarea{
+	min-height: 300px;
+}
+.form_for_games_add_pic{
+	border:none;
+	color: black;
+	outline: none;
+}
+.form_for_games_add_pic:hover{
+	cursor: pointer;
+}
+#progressHandler{
+	color: #000000;
+}
+#progressHandler p{
+	margin-top: 25px;
+}
+
+.post{
+	/*las imagenes originalies 390x520 -> 0.75*/
+	/*height: 202.6666666666666px;*/ /*214*/
+	/*overflow: hidden;*/
+	margin-bottom: 5px;
+	width: 152px;
+	margin: 0 10px 10px 10px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+.post div{    
+	color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+}
+.post a{
+	background: no-repeat center;
+    background-size: cover;
+    width: 152px;
+    height: 213.18974359px;
+	border-radius: 5px;
+	border: 2px solid #1f1f1f;
+}
+.post a:hover{
+	border-color: #ffffff;
+}

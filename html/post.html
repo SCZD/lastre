@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game_Post</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:300,400&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div id="header">
+			<nav>
+				<ul>
+					<li><a href="../index.html">HOME</a></li>
+					<li><a href="">GAMES</a></li>
+					<li><a href="">SOCIAL</a></li>
+					<li><a href="">CONTACT</a></li>
+					<li><a href="">ABOUT</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="body_main">
+		<div class="form_for_games">
+			<form method="POST" class="form_for_games_add" action="../index.html" id="createForm">
+				<h2>FORM</h2>
+				<input id="title" class="form_for_games_add_name" type="text" name="" placeholder="Name">
+				<textarea id="content" class="form_for_games_add_name" placeholder="Description"></textarea>
+				<input class="form_for_games_add_pic" type="file" id="cover">
+				<div id="progressHandler">
+					<p>Processing</p>
+					<progress id="progressBar" value="" max="100">
+				</div>
+				<button id="postSubmit" type="submit">ADD</button>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<div id="footer">
+			<nav>
+				<ul>
+					<li><a href="">Cookies</a></li>
+				</ul>
+			</nav>
+		</div>
+	</footer>
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-storage.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+	<script type="text/javascript" src="../js/js.js"></script>
+</body>
+</html>
