@@ -266,13 +266,13 @@ footer{
 }
 @media(max-width: 560px){
 	.post{
-		width: 120px;
+		width: 100px;
 	}
 	.post a{
 		width: 100px;
 		height: 140.256410257px;
 	}
 	.form_for_games_add textarea{
-		min-height: 50px;
+		min-height: 150px;
 	}
 }
