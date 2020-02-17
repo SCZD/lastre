@@ -35,7 +35,7 @@ const createChildren = async(arr) =>{
 			let cover = document.createElement('a');
 			let anchor = document.createElement('div');
 			let anchorNode = document.createTextNode(post.data.title);
-			cover.setAttribute('href', 'index.html/' );
+			cover.setAttribute('href', 'index.html' );
 			// cover.setAttribute('href', 'index.html');
 			// anchor.setAttribute('href', 'post.html#/' + post.id);
 
