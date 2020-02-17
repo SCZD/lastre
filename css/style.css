@@ -265,6 +265,9 @@ footer{
 	border-color: #ffffff;
 }
 @media(max-width: 560px){
+	.body_main{
+		padding: 5px;
+	}
 	.post{
 		width: 100px;
 	}
