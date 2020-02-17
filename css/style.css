@@ -282,6 +282,6 @@ footer{
     		font-size: 10px;
 	}
 	.form_for_games_add{
-		widows: 100%;
+		width: 90%;
 	}
 }
