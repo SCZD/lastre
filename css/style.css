@@ -266,7 +266,7 @@ footer{
 }
 @media(max-width: 560px){
 	.body_main{
-		padding: 5px;
+		padding: 20px 0;
 	}
 	.post{
 		width: 100px;
