@@ -264,3 +264,12 @@ footer{
 .post a:hover{
 	border-color: #ffffff;
 }
+@media(max-width: 560px){
+	.post{
+		width: 120px;
+		height: 168.307692308px;
+	}
+	.form_for_games_add textarea{
+		min-height: 150px;
+	}
+}
