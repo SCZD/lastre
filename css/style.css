@@ -267,6 +267,9 @@ footer{
 @media(max-width: 560px){
 	.post{
 		width: 120px;
+	}
+	.post a{
+		width: 120px;
 		height: 168.307692308px;
 	}
 	.form_for_games_add textarea{
