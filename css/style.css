@@ -273,7 +273,7 @@ footer{
 		height: 140.256410257px;
 	}
 	.form_for_games_add textarea{
-		min-height: 150px;
+		min-height: 50px;
 	}
 	.post div{    
     		font-size: 10px;
