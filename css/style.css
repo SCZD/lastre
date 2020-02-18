@@ -255,7 +255,7 @@ footer{
 }
 .post a{
 	background: no-repeat center;
-    background-size: cover;
+    background-size: 100% 100%;
     width: 152px;
     height: 213.18974359px;
 	border-radius: 5px;
