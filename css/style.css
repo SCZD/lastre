@@ -272,14 +272,14 @@ footer{
 		justify-content: center;
 	}
 	.post{
-		width: calc(100vw / 3.5);
+		width: calc(100vw / 4);
 		height: auto;
-		margin-left: calc(100vw / 20);
-		margin-right: calc(100vw / 20);
+		margin-left: calc(100vw / 35);
+		margin-right: calc(100vw / 35);
 	}
 	.post a{
 		width: 100%;
-		height: calc(calc(100vw / 3.5) * 1.40256410257);
+		height: calc(calc(100vw / 4) * 1.40256410257);
 	}
 	.post div{    
     	font-size: 10px;
