@@ -274,8 +274,8 @@ footer{
 	.post{
 		width: calc(100vw / 3.5);
 		height: auto;
-		margin-left: calc(100vw / 25);
-		margin-right: calc(100vw / 25);
+		margin-left: calc(100vw / 20);
+		margin-right: calc(100vw / 20);
 	}
 	.post a{
 		width: 100%;
