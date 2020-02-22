@@ -279,7 +279,7 @@ footer{
 	}
 	.post a{
 		width: 100%;
-		height: calc(calc(100vw / 4) * 1.40256410257);
+		height: calc(calc(100vw / 3.5) * 1.40256410257);
 	}
 	.post div{    
     	font-size: 10px;
