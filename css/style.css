@@ -268,18 +268,24 @@ footer{
 	.body_main{
 		padding: 20px 0;
 	}
+	.cover_page{
+		justify-content: center;
+	}
 	.post{
-		width: 100px;
+		width: calc(100vw / 4);
+		height: auto;
+		margin-left: calc(100vw / 25);
+		margin-right: calc(100vw / 25);
 	}
 	.post a{
-		width: 100px;
-		height: 140.256410257px;
+		width: 100%;
+		height: calc(calc(100vw / 4) * 1.40256410257);
+	}
+	.post div{    
+    	font-size: 10px;
 	}
 	.form_for_games_add textarea{
 		min-height: 50px;
-	}
-	.post div{    
-    		font-size: 10px;
 	}
 	.form_for_games_add{
 		width: 90%;
