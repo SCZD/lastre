@@ -272,7 +272,7 @@ footer{
 		justify-content: center;
 	}
 	.post{
-		width: calc(100vw / 4);
+		width: calc(100vw / 3.5);
 		height: auto;
 		margin-left: calc(100vw / 25);
 		margin-right: calc(100vw / 25);
