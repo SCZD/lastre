@@ -264,33 +264,7 @@ footer{
 .post a:hover{
 	border-color: #ffffff;
 }
-@media(max-width: 560px){
-	.body_main{
-		padding: 20px 0;
-	}
-	.cover_page{
-		justify-content: center;
-	}
-	.post{
-		width: calc(100vw / 4);
-		height: auto;
-		margin-left: calc(100vw / 35);
-		margin-right: calc(100vw / 35);
-	}
-	.post a{
-		width: 100%;
-		height: calc(calc(100vw / 4) * 1.40256410257);
-	}
-	.post div{    
-    	font-size: 10px;
-	}
-	.form_for_games_add textarea{
-		min-height: 50px;
-	}
-	.form_for_games_add{
-		width: 90%;
-	}
-}
+
 
 
 
@@ -397,11 +371,11 @@ footer{
 }
 #post img {
 	position: relative;
-	width:390px;
-	height:547.000000001px;
+	max-width:390px;
+	max-height:547.000000001px;
 	border-radius: 5px;
 	border: 2px solid white;
-	margin-right: 75px;
+	margin-right: 50px;
 }
 #post > div > div{
 	display: flex;
@@ -474,4 +448,36 @@ footer{
   100% {
     transform: translate(24px, 0);
   }
+}
+
+@media(max-width: 560px){
+	.body_main{
+		padding: 20px 0;
+	}
+	.cover_page{
+		justify-content: center;
+	}
+	.post{
+		width: calc(100vw / 4);
+		height: auto;
+		margin-left: calc(100vw / 35);
+		margin-right: calc(100vw / 35);
+	}
+	.post a{
+		width: 100%;
+		height: calc(calc(100vw / 4) * 1.40256410257);
+	}
+	.post div{    
+    	font-size: 10px;
+	}
+	.form_for_games_add textarea{
+		min-height: 50px;
+	}
+	.form_for_games_add{
+		width: 90%;
+	}
+	#post img{
+		width:25%;
+		height: calc(width * 1.40256410257px);
+	}
 }
