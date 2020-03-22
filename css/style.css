@@ -365,7 +365,7 @@ footer{
 	margin-top: 50px;
 }
 #editdeletebuttons{
-	max-width: 45%;
+	max-width: 100%;
 	display: flex;
 	align-self: center;
 }
@@ -476,8 +476,27 @@ footer{
 	.form_for_games_add{
 		width: 90%;
 	}
+
+
 	#post img{
-		width:25%;
+		width:35%; /*coincide con wl div div width*/
 		height: calc(width * 1.40256410257px);
+	}
+	#post > div{
+		display: flex;
+		flex-direction: column;
+	}
+	#post img{
+		margin-right:0;
+	}
+	#post > div > div{
+		min-width: 90%;
+		margin-top: 25px;
+	}
+	#post > div > div > h3{
+		text-align: center;
+	}
+	#post > div > div > div{
+		text-align: justify;
 	}
 }
