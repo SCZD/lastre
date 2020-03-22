@@ -291,3 +291,187 @@ footer{
 		width: 90%;
 	}
 }
+
+
+
+
+#editFormContainer{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	width: 100%;
+	margin-bottom: 75px;
+}
+#editForm{
+	display: flex;
+	flex-direction: column;
+	width: 650px;
+}
+#editTitle {
+	margin-bottom: 25px;
+}
+#editContent{
+	margin-bottom: 35px;
+	min-height: 250px;
+}
+#editCover{
+	margin-bottom: 25px;
+	outline: none;
+	border: none;
+
+}
+#editTitle,#editContent{
+	outline: none;
+    padding: 15px;
+    background:  #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+
+#editSubmit{
+	border: none;
+    background: #7367f0;
+    border-radius: 3px;
+    padding: 20px;
+    margin-top: 30px;
+    color: #ffffff;
+    font-size: 15px;
+    border: 1px solid transparent;
+}
+#editSubmit:hover{
+	cursor: pointer;
+	border: 1px solid #ffffff;
+}
+
+
+
+
+
+
+
+
+
+.postContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#edit{
+	position:relative;
+	margin-right: 25px;
+}
+
+#delete{
+	position: relative;
+}
+#edit,#delete{
+	padding: 8px 34px;
+    border-radius: 3px;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    background: transparent;
+    color: #ffffff;
+}
+#delete:hover,#edit:hover{
+	cursor: pointer;
+	z-index: 5;
+}
+
+#post{
+	position: relative;
+	background: transparent;
+}
+#post > div{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: 70px;
+	margin-top: 50px;
+}
+#editdeletebuttons{
+	max-width: 45%;
+	display: flex;
+	align-self: center;
+}
+#post img {
+	position: relative;
+	width:390px;
+	height:547.000000001px;
+	border-radius: 5px;
+	border: 2px solid white;
+	margin-right: 75px;
+}
+#post > div > div{
+	display: flex;
+	flex-direction: column;
+	max-width: 35%;
+}
+#post > div > div > h3{
+	/*text-align: center;*/
+}
+#post > div > div > div{
+	/*padding: 25px;*/
+}
+#loading{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}

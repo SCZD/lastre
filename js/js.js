@@ -18,6 +18,12 @@ const createForm = document.querySelector('#createForm');
 const progressBar = document.querySelector('#progressBar');
 const progressHandler = document.querySelector('#progressHandler');
 const postSubmit = document.querySelector('#postSubmit');
+const loading = document.querySelector('#loading');
+const editButton = document.querySelector('#edit');
+const deleteButton = document.querySelector('#delete');
+const singlePost = document.querySelector('#post');
+const editFormContainer = document.querySelector('#editFormContainer');
+let editMode = false;
 
 const getPosts = async() => {
 	let	postsArray = [];
@@ -28,6 +34,67 @@ const getPosts = async() => {
 
 	createChildren(postsArray);
 }
+
+const getPost = async() => {
+
+	let postId = getPostIdFromURL();
+	if(loading != null){
+		loading.innerHTML = '<div class="lds-ellipsis"><div></div><div></div><div></div><div></div><p></p></div>';
+	}
+
+	let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err));
+
+	if (loading != null) {
+		loading.innerHTML = '';
+	}
+
+	if (post && deleteButton != null) {
+		deleteButton.style.display = 'block';
+	}
+
+	if (post && editButton != null) {
+		editButton.style.display = 'block';
+	}
+
+	createChild(post.data());
+
+}
+
+const createChild = (postData) =>{
+	if (singlePost !== null) {
+
+		let div = document.createElement('div');
+		let infodiv = document.createElement('div');
+		let img = document.createElement('img');
+		img.setAttribute('src', postData.cover);
+		img.setAttribute('loading', 'lazy');
+
+		let title = document.createElement('h3');
+		let titleNode = document.createTextNode(postData.title);
+		title.appendChild(titleNode);
+
+		let content = document.createElement('div');
+		let contentNode = document.createTextNode(postData.content);
+		content.appendChild(contentNode);
+
+		div.appendChild(img);
+		infodiv.appendChild(title);
+		infodiv.appendChild(content);
+		div.appendChild(infodiv);
+
+		post.appendChild(div);
+	}
+}
+
+const getPostIdFromURL = () => {
+	let postLocation = window.location.href;
+	let hrefArray = postLocation.split('/');
+	let postIdURL = hrefArray.slice(-1).pop();
+	let postId = postIdURL.replace(/%20/g," ");
+    
+    return postId;
+}
+
 const createChildren = async(arr) =>{
 	if (posts != null) {
 		arr.map( post =>{
@@ -35,9 +102,9 @@ const createChildren = async(arr) =>{
 			let cover = document.createElement('a');
 			let anchor = document.createElement('div');
 			let anchorNode = document.createTextNode(post.data.title);
-			cover.setAttribute('href', 'index.html' );
+			// cover.setAttribute('href', 'index.html' );
 			// cover.setAttribute('href', 'index.html');
-			// anchor.setAttribute('href', 'post.html#/' + post.id);
+			cover.setAttribute('href', 'html/postinside.html#/' + post.id);
 
 			anchor.appendChild(anchorNode);
 			cover.style.backgroundImage = 'url(' + post.data.cover + ')';
@@ -47,6 +114,30 @@ const createChildren = async(arr) =>{
 			posts.appendChild(div);
 		});
 	}
+}
+
+
+
+
+if(editButton != null){
+	editButton.addEventListener('click',() =>{
+		if (editMode == false) {
+			editMode = true;
+			console.log('enabling edit mode');
+
+			appendEditForm();
+		}else{
+			editMode = false;
+			console.log('disaling edit mode');
+
+			removeEditForm();
+		}
+	})
+}
+
+const removeEditForm = () => {
+	let editForm = document.getElementById('editForm');
+	editFormContainer.removeChild(editForm);
 }
 
 if (createForm != null) {
@@ -114,7 +205,146 @@ if (createForm != null) {
 	});
 }
 
+
+
+
+if(deleteButton !== null){
+	deleteButton.addEventListener('click', async() =>{
+
+		const postId = getPostIdFromURL();
+		let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err));
+
+		const storageRef = firebase.storage().ref();
+		await storageRef.child(post.data().fileref).delete().catch(err => console.log(err));
+		await firebase.firestore().collection('posts').doc(postId).delete();
+		window.location.replace('../index.html');
+
+	});
+}
+const appendEditForm = async() => {
+	let postId = getPostIdFromURL();
+	let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err));
+	let d;
+
+	let form = document.createElement('form');
+	form.setAttribute('method', 'POST');
+	form.setAttribute('id', 'editForm');
+
+	let titleInput = document.createElement('input');
+	titleInput.setAttribute('value', post.data().title);
+	titleInput.setAttribute('id','editTitle');
+
+	let contentTextarea = document.createElement('textarea');
+	contentTextarea.setAttribute('id','editContent');
+
+	let coverFile = document.createElement('input');
+	coverFile.setAttribute('type', 'file');
+	coverFile.setAttribute('id','editCover');
+
+	let oldCover = document.createElement('input');
+	oldCover.setAttribute('type','hidden');
+	oldCover.setAttribute('id','oldCover');
+
+	let submit = document.createElement('input');
+	submit.setAttribute('value','Update Post');
+	submit.setAttribute('type','submit');
+	submit.setAttribute('id','editSubmit');
+
+
+	form.appendChild(titleInput);
+	form.appendChild(contentTextarea);
+	form.appendChild(coverFile);
+	form.appendChild(oldCover);
+	form.appendChild(submit);
+	editFormContainer.appendChild(form);
+
+	document.getElementById('editContent').value = post.data().content;
+	document.getElementById('oldCover').value = post.data().fileref;
+
+	document.querySelector('#editForm').addEventListener('submit', async(e) => {
+		e.preventDefault();
+
+		const postId  = await getPostIdFromURL();
+
+		if (document.getElementById('editTitle').value !='' && document.getElementById('editContent').value !=''){
+
+			if(document.getElementById('editCover').files[0] !== undefined ){
+				const cover = document.getElementById('editCover').files[0];
+				const storageRef = firebase.storage().ref();
+				const storageChild = storageRef.child(cover.name);
+				console.log('updating file...');
+
+				const postCover = storageChild.put(cover);
+
+
+
+
+
+
+
+				await new Promise((resolve) =>{
+				postCover.on('state_changed', (snapshot) => {
+					let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+					console.log(Math.trunc(progress));
+
+					if (progressHandler != null){
+						progressHandler.style.display = true;
+					}
+					if (postSubmit != null) {
+						postSubmit.disabled = true;
+					}
+					if (progressBar != null) {
+						progressBar.value = progress;
+					}	
+				}, (error)=> {
+					//error
+					console.log(error)
+				}, async() => {
+					const downloadURL = await storageChild.getDownloadURL(); 
+					d = downloadURL;
+					console.log(d);
+					resolve();
+				});
+			});
+
+
+
+
+			const fileRef = await firebase.storage().refFromURL(d);
+
+			await storageRef.child(document.getElementById('oldCover').value).delete().catch(err => {
+				console.log(err);
+
+			});
+			console.log('Image deleted succesful! :3');
+
+			let post = {
+				title: document.getElementById('editTitle').value,
+				content: document.getElementById('editContent').value,
+				cover: d,
+				fileref: fileRef.location.path
+			}
+
+			await firebase.firestore().collection('posts').doc(postId).set(post, {merge:true});
+			location.reload();
+
+			}else{
+				await firebase.firestore().collection('posts').doc(postId).set({
+					title: document.getElementById('editTitle').value,
+					content: document.getElementById('editContent').value
+				},{merge: true});
+
+				location.reload();
+			}
+		}else{
+			console.log('Fill inputs retartd!');
+		}
+	})
+
+
+}
 //check DOM
 document.addEventListener('DOMContentLoaded', (e) => {
+	getPost();
 	getPosts();
 });
