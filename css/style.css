@@ -499,4 +499,7 @@ footer{
 	#post > div > div > div{
 		text-align: justify;
 	}
+	#editForm{
+		width: 90%;
+	}
 }
