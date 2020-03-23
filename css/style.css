@@ -27,6 +27,8 @@ header{
     display: flex;
     justify-content: center;
     background: #121212;
+    align-items: center;
+    position: relative;
 }
 #header{
 	width: 95%;
@@ -34,6 +36,7 @@ header{
     position: relative;
     /*padding: 10px 0;*/
     justify-content: center;
+    align-items: center;
 }
 #header ul{
 	display: flex;
@@ -318,6 +321,97 @@ footer{
 }
 
 
+
+
+
+
+
+#houdini, #cerrar{
+	position: absolute;
+	padding: 2px 7.5px 2px 7.5px;
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+    overflow: hidden;
+    outline: none;
+    background: transparent;
+    height: 25px;
+    color:#ffffff;
+    font-size: 14px;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    z-index: 2;
+}
+#houdini,#cerrar{
+	right: 0px;
+}
+#houdini:hover,#cerrar:hover{
+	cursor: pointer;
+}
+#izanmagic{
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background: transparent;
+	z-index: 20;
+}
+#izanmagic > button{
+	width: 100%;
+	height: 100%;
+	background: #666;
+	outline: none;
+	border: 0;
+	filter: opacity(75%);
+}
+#izanmagic > button:hover{
+	cursor: pointer;
+}
+
+#izanmagiclogin{
+	position: absolute;
+	transform: translate(-50%,-50%);
+	top: 50%;
+	left: 50%;
+	background: #ffffff;
+	width: 250px;
+	height: 350px;
+	z-index: 25;
+	border-radius: 5px;
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#izanmagiclogin > input{
+	display: flex;
+    padding: 8px 2px 8px 15px;
+    border: 0px solid #d9d9d9;
+    border-radius: 5px;
+    overflow: hidden;
+    outline: none;
+    background: #f1f1f1;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+}
+#izanmagiclogin > button{
+	border: none;
+    background: #7367f0;
+    border-radius: 3px;
+    padding: 15px;
+    margin-top: 30px;
+    color: #ffffff;
+    font-size: 15px;
+
+}
+#izanmagiclogin > button:hover{
+	cursor: pointer;
+	text-decoration: underline;
+	box-shadow: rgb(115, 103, 240) 0 10px 20px -8px;
+}
 
 
 

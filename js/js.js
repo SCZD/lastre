@@ -348,3 +348,67 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	getPost();
 	getPosts();
 });
+
+
+
+//houdini
+function houdini(){
+	document.getElementById('izanmagic').style.display = 'flex';
+	document.getElementById('houdini').style.display = 'none';
+}
+function unhoudini(){
+	document.getElementById('izanmagic').style.display = 'none';
+	document.getElementById('houdini').style.display = 'flex';
+}
+
+//login
+function ingreso(){
+	let email1 = document.getElementById('email').value;
+	let contrasena1 = document.getElementById('contrasena').value;
+
+		document.getElementById('izanmagic').style.display = 'none';
+
+	firebase.auth().signInWithEmailAndPassword(email1, contrasena1).catch(function(error) {
+  	// Handle Errors here.
+  	var errorCode = error.code;
+  	var errorMessage = error.message;
+  	console.log(errorCode);
+  	console.log(errorMessag);
+ 	 // ...
+	});
+}
+
+function cerrar(){
+	firebase.auth().signOut().then(function() {
+
+	}).catch(function(error) {
+ 	 // An error happened.
+	});
+}
+
+function obserdador(){
+	firebase.auth().onAuthStateChanged(function(user) {
+  		if (user) {
+  			console.log('User active');
+    		// User is signed in.
+    		var displayName = user.displayName;
+    		var email = user.email;
+    		console.log(email);
+    		var emailVerified = user.emailVerified;
+    		var photoURL = user.photoURL;
+    		var isAnonymous = user.isAnonymous;
+    		var uid = user.uid;
+    		var providerData = user.providerData;
+    		document.getElementById('cerrar').style.display = 'flex';
+    		document.getElementById('houdini').style.display = 'none';
+    		// ...
+  		} else {
+    		// User is signed out.
+    		// ...
+    		console.log('User not active');
+    		document.getElementById('cerrar').style.display = 'none';
+    		document.getElementById('houdini').style.display = 'flex';
+  		}
+	});
+}
+obserdador();

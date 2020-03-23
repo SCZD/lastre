@@ -18,9 +18,19 @@
 
 				</ul>
 			</nav>
+				<button id="houdini" onclick="houdini()">Submit</button>
+				<button id="cerrar" onclick="cerrar()">Logout</button>
 		</div>
 	</header>
 	<div class="body_main">
+	<div id="izanmagic">
+			<button onclick="unhoudini()"></button>
+			<div id="izanmagiclogin">
+				<input id="email" type="emai" placeholder="Email...">
+				<input id="contrasena" type="password" placeholder='Pass..'>
+				<button id="ingreso" onclick="ingreso()">Login</button>
+			</div>
+	</div>
 	<main id="main" class="postContainer">
 		<div id="loading"></div>
 
@@ -42,12 +52,15 @@
 			</nav>
 		</div>
 	</footer>
-	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-storage.js"></script>
+	<!-- FIREBASE -->
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
-	<script type="text/javascript" src="../js/js.js"></script>
+<script type="text/javascript" src="../js/js.js"></script>
 </body>
 </html>
