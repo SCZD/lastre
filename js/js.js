@@ -373,7 +373,8 @@ function ingreso(){
   	var errorCode = error.code;
   	var errorMessage = error.message;
   	console.log(errorCode);
-  	console.log(errorMessag);
+  	console.log(errorMessage);
+  	document.getElementById('houdini').style.display = 'flex';
  	 // ...
 	});
 }
