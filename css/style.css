@@ -290,6 +290,7 @@ footer{
 #editContent{
 	margin-bottom: 35px;
 	min-height: 250px;
+	max-width: 650px;
 }
 #editCover{
 	margin-bottom: 25px;
