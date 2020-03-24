@@ -23,6 +23,7 @@ const editButton = document.querySelector('#edit');
 const deleteButton = document.querySelector('#delete');
 const singlePost = document.querySelector('#post');
 const editFormContainer = document.querySelector('#editFormContainer');
+
 let editMode = false;
 
 const getPosts = async() => {
@@ -124,12 +125,10 @@ if(editButton != null){
 		if (editMode == false) {
 			editMode = true;
 			console.log('enabling edit mode');
-
 			appendEditForm();
 		}else{
 			editMode = false;
 			console.log('disaling edit mode');
-
 			removeEditForm();
 		}
 	})
@@ -175,6 +174,7 @@ if (createForm != null) {
 				}, (error)=> {
 					//error
 					console.log(error)
+					alert("Pls Auth...");
 				}, async() => {
 					const downloadURL = await storageChild.getDownloadURL(); 
 					d = downloadURL;
@@ -199,7 +199,8 @@ if (createForm != null) {
 				postSubmit.disabled = false;
 			}
 		}else{
-			console.log('fill imputs');
+			console.log('fill inputs');
+			alert('Fill inputs :)');
 		}
 
 	});
@@ -215,7 +216,8 @@ if(deleteButton !== null){
 		let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err));
 
 		const storageRef = firebase.storage().ref();
-		await storageRef.child(post.data().fileref).delete().catch(err => console.log(err));
+		await storageRef.child(post.data().fileref).delete().catch(err => console.log(err), alert('Pls Auth...'));
+
 		await firebase.firestore().collection('posts').doc(postId).delete();
 		window.location.replace('../index.html');
 
@@ -223,7 +225,7 @@ if(deleteButton !== null){
 }
 const appendEditForm = async() => {
 	let postId = getPostIdFromURL();
-	let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err));
+	let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err + 'here not'));
 	let d;
 
 	let form = document.createElement('form');
@@ -263,8 +265,9 @@ const appendEditForm = async() => {
 
 	document.querySelector('#editForm').addEventListener('submit', async(e) => {
 		e.preventDefault();
-
 		const postId  = await getPostIdFromURL();
+
+
 
 		if (document.getElementById('editTitle').value !='' && document.getElementById('editContent').value !=''){
 
@@ -275,12 +278,6 @@ const appendEditForm = async() => {
 				console.log('updating file...');
 
 				const postCover = storageChild.put(cover);
-
-
-
-
-
-
 
 				await new Promise((resolve) =>{
 				postCover.on('state_changed', (snapshot) => {
@@ -296,24 +293,22 @@ const appendEditForm = async() => {
 					if (progressBar != null) {
 						progressBar.value = progress;
 					}	
-				}, (error)=> {
+				}, (err)=> {
 					//error
-					console.log(error)
+					console.log(error + 'here not');
 				}, async() => {
 					const downloadURL = await storageChild.getDownloadURL(); 
 					d = downloadURL;
 					console.log(d);
 					resolve();
+					console.log('here not');
 				});
 			});
-
-
-
 
 			const fileRef = await firebase.storage().refFromURL(d);
 
 			await storageRef.child(document.getElementById('oldCover').value).delete().catch(err => {
-				console.log(err);
+				console.log(err + 'here not');
 
 			});
 			console.log('Image deleted succesful! :3');
@@ -338,8 +333,9 @@ const appendEditForm = async() => {
 			}
 		}else{
 			console.log('Fill inputs retartd!');
+			alert('Fill inputs thx :)');
 		}
-	})
+	}); //!
 
 
 }
@@ -375,6 +371,7 @@ function ingreso(){
   	console.log(errorCode);
   	console.log(errorMessage);
   	document.getElementById('houdini').style.display = 'flex';
+  	alert("User, password or both are incorrect :(");
  	 // ...
 	});
 }
@@ -402,6 +399,7 @@ function obserdador(){
     		var providerData = user.providerData;
     		document.getElementById('cerrar').style.display = 'flex';
     		document.getElementById('houdini').style.display = 'none';
+
     		// ...
   		} else {
     		// User is signed out.
@@ -413,3 +411,4 @@ function obserdador(){
 	});
 }
 obserdador();
+

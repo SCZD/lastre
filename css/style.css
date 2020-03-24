@@ -290,7 +290,7 @@ footer{
 #editContent{
 	margin-bottom: 35px;
 	min-height: 250px;
-	max-width: 650px;
+	width: 650px !important;
 }
 #editCover{
 	margin-bottom: 25px;
@@ -322,21 +322,16 @@ footer{
 }
 
 
-
-
-
-
-
 #houdini, #cerrar{
 	position: absolute;
 	padding: 2px 7.5px 2px 7.5px;
-    border: 1px solid #ffffff;
-    border-radius: 2px;
+    border: 2px solid #B3B6B7;;
+    border-radius: 3px;
     overflow: hidden;
     outline: none;
     background: transparent;
     height: 25px;
-    color:#ffffff;
+    color:#B3B6B7;;
     font-size: 14px;
     transform: translate(-50%,-50%);
     top: 50%;
@@ -347,6 +342,8 @@ footer{
 }
 #houdini:hover,#cerrar:hover{
 	cursor: pointer;
+	border-color:#ffffff;
+	color: #ffffff;
 }
 #izanmagic{
 	position: fixed;
