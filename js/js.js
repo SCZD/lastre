@@ -174,7 +174,7 @@ if (createForm != null) {
 				}, (error)=> {
 					//error
 					console.log(error)
-					alert("Pls Auth...");
+					// alert("Pls Auth...");
 				}, async() => {
 					const downloadURL = await storageChild.getDownloadURL(); 
 					d = downloadURL;
@@ -216,7 +216,7 @@ if(deleteButton !== null){
 		let post = await firebase.firestore().collection('posts').doc(postId).get().catch(err => console.log(err));
 
 		const storageRef = firebase.storage().ref();
-		await storageRef.child(post.data().fileref).delete().catch(err => console.log(err), alert('Pls Auth...'));
+		await storageRef.child(post.data().fileref).delete().catch(err => console.log(err));
 
 		await firebase.firestore().collection('posts').doc(postId).delete();
 		window.location.replace('../index.html');
